@@ -783,8 +783,7 @@ static int icm20948_i2c_probe(struct i2c_client *client,
 	indio_dev->available_scan_masks = icm20948_scan_masks;
 
 	// get mount matrix
-	ret = of_iio_read_mount_matrix(&client->dev,
-		"mount-matrix", &icm->orientation);
+	ret = iio_read_mount_matrix(&client->dev, &icm->orientation);
 	if (ret) {
 		return ret;
 	}
